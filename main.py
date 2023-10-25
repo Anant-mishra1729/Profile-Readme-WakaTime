@@ -15,7 +15,7 @@ import numpy as np
 import requests
 
 waka_key = os.getenv("INPUT_WAKATIME_API_KEY")
-stats_range = os.getenv("INPUT_STATS_RANGE", "last_30_days")
+stats_range = os.getenv("INPUT_STATS_RANGE", "last_7_days")
 
 def this_range(dates: list) -> str:
     """Returns streak within given range"""
@@ -27,7 +27,7 @@ def this_range(dates: list) -> str:
 
 def make_graph(data: list):
     """Make progress graph from API graph"""
-    fig, ax = plt.subplots(figsize=(4, 2))
+    fig, ax = plt.subplots(figsize=(10, 2))
     with open("/colors.json") as json_file:
         color_data = json.load(json_file)
     y_pos = np.arange(len(data[0]))
@@ -57,7 +57,7 @@ def make_graph(data: list):
             ha="left",
             color="#586069"
         )
-    plt.savefig("stat.png", bbox_inches="tight", transparent=True)
+    plt.savefig("stat.svg", bbox_inches="tight", transparent=True)
     print("new image generated")
 
 
