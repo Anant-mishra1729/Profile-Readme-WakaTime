@@ -27,7 +27,7 @@ def this_range(dates: list) -> str:
 
 def make_graph(data: list):
     """Make progress graph from API graph"""
-    fig, ax = plt.subplots(figsize=(10, 2))
+    fig, ax = plt.subplots(figsize=(4, 2))
     with open("/colors.json") as json_file:
         color_data = json.load(json_file)
     y_pos = np.arange(len(data[0]))
